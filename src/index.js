@@ -76,22 +76,22 @@ socket.on('version', (version) => {
   function keyDownTextField(e) {
     var keyCode = e.keyCode;
     console.log(keyCode)
-    if (keyCode == 38) {
+    if (keyCode == 38 || keyCode == 87) {
       // forward
       socket.emit('move', "down_forward");
-    } else if (e.keyCode == 40) {
+    } else if (keyCode == 40 || keyCode == 83) {
       // back
       socket.emit('move', "down_back");
     }
-    else if (e.keyCode == 37) {
+    else if (keyCode == 37 || keyCode == 65) {
       // left
       socket.emit('move', "down_left");
     }
-    else if (e.keyCode == 39) {
+    else if (keyCode == 39 || keyCode == 68) {
       // right
       socket.emit('move', "down_right");
     }
-    else if (e.keyCode == 32) {
+    else if (keyCode == 32) {
       // right
       socket.emit('move', "down_jump");
     }
