@@ -11,7 +11,7 @@ const Vec3 = require('vec3').Vec3
 const io = require('socket.io-client')
 const socket = io()
 
-function getJSON (url, callback) {
+function getJSON(url, callback) {
   const xhr = new XMLHttpRequest()
   xhr.open('GET', url, true)
   xhr.responseType = 'json'
@@ -57,7 +57,7 @@ document.body.appendChild(renderer.domElement)
 
 let controls = new THREE.OrbitControls(camera, renderer.domElement)
 
-function animate () {
+function animate() {
   window.requestAnimationFrame(animate)
   if (controls) controls.update()
   renderer.render(scene, camera)
@@ -70,6 +70,52 @@ socket.on('version', (version) => {
   entities.clear()
   primitives.clear()
   firstPositionUpdate = true
+  document.addEventListener("keydown", keyDownTextField, false);
+  document.addEventListener("keyup", keyUpTextField, false);
+
+  function keyDownTextField(e) {
+    var keyCode = e.keyCode;
+    console.log(keyCode)
+    if (keyCode == 38) {
+      // forward
+      socket.emit('move', "down_forward");
+    } else if (e.keyCode == 40) {
+      // back
+      socket.emit('move', "down_back");
+    }
+    else if (e.keyCode == 37) {
+      // left
+      socket.emit('move', "down_left");
+    }
+    else if (e.keyCode == 39) {
+      // right
+      socket.emit('move', "down_right");
+    }
+    else if (e.keyCode == 32) {
+      // right
+      socket.emit('move', "down_jump");
+    }
+  }
+
+  function keyUpTextField(e) {
+    var keyCode = e.keyCode;
+    console.log(keyCode)
+    if (keyCode == 38) {
+      // forward
+      socket.emit('move', "up_forward");
+    } else if (e.keyCode == 40) {
+      // back
+      socket.emit('move', "up_back");
+    }
+    else if (e.keyCode == 37) {
+      // right
+      socket.emit('move', "up_right");
+    }
+    else if (e.keyCode == 39) {
+      // left
+      socket.emit('move', "up_left");
+    }
+  }
 
   let botMesh
   socket.on('position', ({ pos, addMesh, yaw, pitch }) => {

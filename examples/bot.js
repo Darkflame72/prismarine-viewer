@@ -2,11 +2,13 @@ const mineflayer = require('mineflayer')
 const mineflayerViewer = require('prismarine-viewer').mineflayer
 
 const bot = mineflayer.createBot({
-  username: 'Bot'
+  username: 'Bot',
+  host: 'localhost',
+  port: 25565,
 })
 
 bot.once('spawn', () => {
-  mineflayerViewer(bot, { port: 3000 })
+  mineflayerViewer(bot, { firstPerson: true, port: 3000 })
 
   const path = [bot.entity.position.clone()]
   bot.on('move', () => {
