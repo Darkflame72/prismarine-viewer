@@ -84,15 +84,15 @@ socket.on('version', (version) => {
       socket.emit('move', "down_back");
     }
     else if (keyCode == 37 || keyCode == 65) {
-      // left
-      socket.emit('move', "down_left");
-    }
-    else if (keyCode == 39 || keyCode == 68) {
       // right
       socket.emit('move', "down_right");
     }
+    else if (keyCode == 39 || keyCode == 68) {
+      // left
+      socket.emit('move', "down_left");
+    }
     else if (keyCode == 32) {
-      // right
+      // jump
       socket.emit('move', "down_jump");
     }
   }
@@ -100,18 +100,18 @@ socket.on('version', (version) => {
   function keyUpTextField(e) {
     var keyCode = e.keyCode;
     console.log(keyCode)
-    if (keyCode == 38) {
+    if (keyCode == 38 || keyCode == 87) {
       // forward
       socket.emit('move', "up_forward");
-    } else if (e.keyCode == 40) {
+    } else if (keyCode == 40 || keyCode == 83) {
       // back
       socket.emit('move', "up_back");
     }
-    else if (e.keyCode == 37) {
+    else if (keyCode == 37 || keyCode == 65) {
       // right
       socket.emit('move', "up_right");
     }
-    else if (e.keyCode == 39) {
+    else if (keyCode == 39 || keyCode == 68) {
       // left
       socket.emit('move', "up_left");
     }
