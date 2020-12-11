@@ -1,14 +1,18 @@
+console.log("Loading bot.")
 const mineflayer = require('mineflayer')
 const mineflayerViewer = require('prismarine-viewer').mineflayer
 
+console.log("Loaded mineflayer and prismarine-viewer; connecting to server...");
 const bot = mineflayer.createBot({
-  username: 'Bot',
+  username: 'AwesomestWeb',
   host: 'localhost',
-  port: 25565,
+  port: 25575,
 })
 
+console.log("Connected to remote server! Spawning user.")
 bot.once('spawn', () => {
   mineflayerViewer(bot, { firstPerson: true, port: 3000 })
+  console.log("Opening web server.")
 
   const path = [bot.entity.position.clone()]
   bot.on('move', () => {
@@ -17,4 +21,5 @@ bot.once('spawn', () => {
       bot.viewer.drawLine('path', path)
     }
   })
+  const mcData = require('minecraft-data')(bot.version);
 })
