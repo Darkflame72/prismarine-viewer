@@ -4,9 +4,9 @@ const mineflayerViewer = require('prismarine-viewer').mineflayer
 
 console.log("Loaded mineflayer and prismarine-viewer; connecting to server...");
 const bot = mineflayer.createBot({
-  username: 'AwesomestWeb',
+  username: 'MineWebTest',
   host: 'localhost',
-  port: 25575,
+  port: 25577,
 })
 
 console.log("Connected to remote server! Spawning user.")
