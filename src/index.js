@@ -147,9 +147,9 @@ socket.on('version', (version) => {
   })
 
   socket.on('chat', (msg) => {
-      console.log("Chat: " + msg)
+      console.log("Chat: " + JSON.stringify(msg))
       var messageElem = document.createElement("p")
-      messageElem.appendChild(document.createTextNode(JSON.stringify(msg) + "v1"))
+      messageElem.appendChild(document.createTextNode(msg.text))
       document.getElementById("chat").appendChild(messageElem)
   });
 
