@@ -146,6 +146,13 @@ socket.on('version', (version) => {
     }
   })
 
+  socket.on('chat', (msg) => {
+      console.log("Chat: " + JSON.stringify(msg))
+      var messageElem = document.createElement("p")
+      messageElem.appendChild(document.createTextNode(msg.text))
+      document.getElementById("chat").appendChild(messageElem)
+  });
+
   socket.on('entity', (e) => {
     entities.update(e)
   })

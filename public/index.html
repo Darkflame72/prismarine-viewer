@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prismarine Viewer</title>
+    <title>MineWeb</title>
     <style type="text/css">
+      @font-face {
+        font-family: minecraft;
+        src: url(minecraftia.woff);
+      }
       html {
         overflow: hidden;
       }
@@ -22,9 +26,33 @@
         margin: 0;
         padding: 0;
       }
+      #chat-wrapper {
+        position: fixed;
+        bottom: calc(8px * 16);
+        max-height: calc(90px * 16);
+        width: calc(320px * 4);
+        background-color: rgba(0, 0, 0, 0.5);
+        
+      }
+      #chat {
+        color: white;
+        font-size: 32px;
+        margin: 4px;
+        line-height: 0px;
+        text-shadow: 4px 4px 0px #3f3f3f;
+        font-family: minecraft, monospace;
+      }
     </style>
   </head>
   <body>
     <script type="text/javascript" src="index.js"></script>
+    <div id="chat-wrapper">
+      <div id="chat">
+        <p>&lt;AwesomestGamer&gt; Hello!</p>
+        <p>&lt;AwesomestGamer&gt; This is a mockup!</p>
+        <p>&lt;AwesomestGamer&gt; I need to finish work now.</p>
+        <p>&lt;AwesomestGamer&gt; Hopefully I'll have enough time later to finish it up.</p>
+      </div>
+    </div>
   </body>
 </html>
